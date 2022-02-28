@@ -11,14 +11,11 @@ router = Router()
 
 
 @router.post("/", response=NstResponse)
-
 def nst(request: HttpRequest, nst_request: NstRequest = Form(...), img: UploadedFile = File(...)) -> dict:
-    # img = json.load(img)
-    # nst_request.key = json.load(nst_request.key)
-    # nst_request.picture = json.load(nst_request.picture)
+    print(img)
     file_url = nst_apply(nst_request.key, nst_request.picture, img)
+    print(file_url)
     return {"file_url": file_url}
-
 
 # @router.get("/")
 # def picture(nst_picture: NstPicture = Form(...)) -> str:
